@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/*
+ * Design system — Prona & Co.
+ * Warm editorial: limestone cream, near-black ink, terracotta accent taken from Tirana's rooftops.
+ * Fraunces for display type, Geist for everything else.
+ */
+
+@theme {
+  --font-sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+
+  --color-cream: #f3efe7;
+  --color-cream-2: #e9e3d8;
+  --color-paper: #fbf9f5;
+  --color-ink: #171614;
+  --color-ink-2: #23211e;
+  --color-ink-3: #34312c;
+  --color-mist: #7b766d;
+  --color-stone: #b9b2a6;
+  --color-clay: #c0623a;
+  --color-clay-2: #d9825c;
+  --color-olive: #5f6b4e;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-slow: marquee 80s linear infinite;
+  --animate-marquee-reverse: marquee 80s linear infinite reverse;
+  --animate-scroll-line: scroll-line 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes scroll-line {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    45% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    55% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+  }
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-clay);
+  color: var(--color-paper);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.28em] uppercase;
+}
+.eyebrow::before {
+  content: "";
+  @apply h-px w-10 bg-current opacity-60;
+}
+
+/* Native selects styled to match the inputs */
+.field {
+  @apply w-full appearance-none rounded-xl border border-ink/10 bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-clay;
+}
+select.field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%237b766d' stroke-width='1.6'%3E%3Cpath d='m2 4 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+/* Custom cursor ring (mouse only, see Cursor.tsx) */
+.cursor-ring {
+  @apply pointer-events-none fixed top-0 left-0 z-[95] flex size-10 items-center justify-center rounded-full border text-[11px] font-semibold tracking-[0.2em] text-paper uppercase;
+  transition:
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s,
+    border-color 0.4s;
+  mix-blend-mode: difference;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.cursor-ring span {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cursor-ring[data-state="hover"] {
+  @apply size-16;
+  background: rgba(255, 255, 255, 0.12);
+}
+.cursor-ring[data-state="label"] {
+  @apply size-24 border-transparent;
+  mix-blend-mode: normal;
+  background: var(--color-clay);
+}
+.cursor-ring[data-state="label"] span {
+  opacity: 1;
+}
+
+/* Film grain */
+.grain {
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  animation: grain 1s steps(4) infinite;
+}
+@keyframes grain {
+  25% {
+    background-position: -40px 20px;
+  }
+  50% {
+    background-position: 30px -50px;
+  }
+  75% {
+    background-position: -20px -30px;
+  }
+}
+
+/* Soft clay glow behind dark sections */
+.glow {
+  background:
+    radial-gradient(60% 50% at 85% 0%, rgba(192, 98, 58, 0.22), transparent 70%),
+    radial-gradient(50% 40% at 0% 100%, rgba(95, 107, 78, 0.18), transparent 70%),
+    var(--color-ink);
+}
+
+/* Outlined display type */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+}
+
+/* 3D helpers */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+input[type="range"] {
+  accent-color: var(--color-clay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
