@@ -13,7 +13,7 @@ export const company = {
   phone: "+355 xx xxx xxxx",
   phoneHref: "tel:+355xxxxxxxxx",
   whatsapp: "xxx",
-  email: "test2",
+  email: "test@gmail.com",
   address: "Rruga Ismail Qemali, Blloku, Tiranë 1019",
   coords: { lat: 41.3189, lng: 19.8148 },
   hours: [
