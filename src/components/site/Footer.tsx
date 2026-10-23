@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { navLinks, paths } from "@/constants/routes";
 import { company, zones } from "@/lib/data";
 import { useLang } from "@/lib/i18n";
@@ -100,17 +100,33 @@ export function Footer() {
           </button>
         </div>
 
-        <div className="mt-8 flex flex-col justify-between gap-3 text-xs text-stone sm:flex-row">
+        <div className="mt-8 flex flex-col justify-between gap-3 text-xs text-stone sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {company.name}. {t("Të gjitha të drejtat e rezervuara.", "All rights reserved.")}
           </p>
           <p>{t("Çmimet janë orientuese dhe mund të ndryshojnë.", "Prices are indicative and may change.")}</p>
-          <p>
-            {t("Krijuar nga", "Created by")}{" "}
-            <a href="https://devbynas.com/" target="_blank" rel="noreferrer" className="font-semibold text-paper transition-colors hover:text-clay-2">
-              devbynas.com
-            </a>
-          </p>
+          <a
+            href="https://devbynas.com/"
+            target="_blank"
+            rel="noreferrer"
+            data-magnetic
+            className="group relative isolate inline-flex items-center gap-2.5 self-start overflow-hidden rounded-full border border-paper/15 bg-paper/5 py-1.5 pr-1.5 pl-3 backdrop-blur-md transition-colors duration-500 hover:border-clay-2/60 sm:self-auto"
+          >
+            {/* Gradient fill that sweeps in on hover */}
+            <span
+              aria-hidden
+              className="absolute inset-0 -z-10 origin-left scale-x-0 bg-gradient-to-r from-clay to-clay-2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+            />
+            <span className="relative flex size-2">
+              <span className="absolute inset-0 animate-ping rounded-full bg-clay-2 opacity-70" />
+              <span className="relative size-2 rounded-full bg-clay-2 transition-colors group-hover:bg-paper" />
+            </span>
+            <span className="text-stone transition-colors duration-500 group-hover:text-paper/80">{t("Krijuar nga", "Crafted by")}</span>
+            <span className="font-serif text-sm text-paper italic">devbynas</span>
+            <span className="flex size-6 items-center justify-center rounded-full bg-paper text-ink transition-transform duration-500 group-hover:rotate-45">
+              <ArrowUpRight className="size-3.5" />
+            </span>
+          </a>
         </div>
       </Container>
     </footer>
