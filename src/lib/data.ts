@@ -10,10 +10,10 @@ export const company = {
   name: "Prona & Co.",
   short: "Prona",
   tagline: T("Agjenci imobiliare · Tiranë", "Real estate agency · Tirana"),
-  phone: "+355 69 123 4567",
-  phoneHref: "tel:+355691234567",
+  phone: "xxx",
+  phoneHref: "tel:xxx",
   whatsapp: "355691234567",
-  email: "info@pronaco.al",
+  email: "test2",
   address: "Rruga Ismail Qemali, Blloku, Tiranë 1019",
   coords: { lat: 41.3189, lng: 19.8148 },
   hours: [
