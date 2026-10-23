@@ -105,6 +105,12 @@ export function Footer() {
             © {new Date().getFullYear()} {company.name}. {t("Të gjitha të drejtat e rezervuara.", "All rights reserved.")}
           </p>
           <p>{t("Çmimet janë orientuese dhe mund të ndryshojnë.", "Prices are indicative and may change.")}</p>
+          <p>
+            {t("Krijuar nga", "Created by")}{" "}
+            <a href="https://devbynas.com/" target="_blank" rel="noreferrer" className="font-semibold text-paper transition-colors hover:text-clay-2">
+              devbynas.com
+            </a>
+          </p>
         </div>
       </Container>
     </footer>
