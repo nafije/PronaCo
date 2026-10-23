@@ -12,7 +12,7 @@ export const company = {
   tagline: T("Agjenci imobiliare · Tiranë", "Real estate agency · Tirana"),
   phone: "xxx",
   phoneHref: "tel:xxx",
-  whatsapp: "355691234567",
+  whatsapp: "xxx",
   email: "test2",
   address: "Rruga Ismail Qemali, Blloku, Tiranë 1019",
   coords: { lat: 41.3189, lng: 19.8148 },
@@ -109,9 +109,9 @@ export const zoneByKey = Object.fromEntries(zones.map((z) => [z.key, z])) as Rec
 export type AgentKey = "elira" | "arben" | "sara";
 
 export const agents: Record<AgentKey, { name: string; role: Text; phone: string; whatsapp: string; initials: string }> = {
-  elira: { name: "Elira Hoxha", role: T("Agjente e lartë · Shitje", "Senior agent · Sales"), phone: "+355 69 123 4567", whatsapp: "355691234567", initials: "EH" },
-  arben: { name: "Arben Kola", role: T("Vila & prona luksoze", "Villas & luxury homes"), phone: "+355 68 765 4321", whatsapp: "355687654321", initials: "AK" },
-  sara: { name: "Sara Dervishi", role: T("Qira & zyra", "Rentals & offices"), phone: "+355 67 222 3344", whatsapp: "355672223344", initials: "SD" },
+  elira: { name: "Elira Hoxha", role: T("Agjente e lartë · Shitje", "Senior agent · Sales"), phone: "xxx", whatsapp: "xxx", initials: "EH" },
+  arben: { name: "Arben Kola", role: T("Vila & prona luksoze", "Villas & luxury homes"), phone: "xxx", whatsapp: "xxx", initials: "AK" },
+  sara: { name: "Sara Dervishi", role: T("Qira & zyra", "Rentals & offices"), phone: "xxx", whatsapp: "xxx", initials: "SD" },
 };
 
 export const properties: Property[] = [
